@@ -6,11 +6,13 @@
 > pushed 여부는 이 스크립트가 마지막으로 실행된 시점 기준 `origin/main`로 판단합니다 —
 > 최신 원격 상태를 반영하려면 실행 전에 `git fetch`를 먼저 실행하세요.
 
-생성 시각: 2026-07-15 17:38:25
+생성 시각: 2026-07-15 17:39:36
 브랜치: `main`
 
 | 날짜 | 커밋 | 메시지 | GitHub Push |
 |---|---|---|---|
+| 2026-07-15 17:39 | `ea8720f` | Log translation fix history in build-log.md | ✅ |
+| 2026-07-15 17:38 | `5afb473` | Update commit_log.md pushed status after previous push | ✅ |
 | 2026-07-15 17:38 | `7e3cfcf` | Fix 18 more DocType name mistranslations found via systematic audit | ✅ |
 | 2026-07-15 17:17 | `a2387fa` | Update commit_log.md pushed status after previous push | ✅ |
 | 2026-07-15 17:17 | `686c48f` | Fix Stock Settings mistranslation (기본 설정 -> 재고 설정) | ✅ |
