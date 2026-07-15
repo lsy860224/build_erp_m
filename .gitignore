@@ -1,0 +1,21 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+
+# Env / secrets
+.env
+.env.*
+
+# Logs
+*.log
+
+# Frappe/ERPNext bench (if bench gets initialized here later)
+sites/
+apps/frappe/
+apps/erpnext/
+env/
+logs/
