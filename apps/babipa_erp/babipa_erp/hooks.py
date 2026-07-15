@@ -256,3 +256,11 @@ app_license = "mit"
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
+# Fixtures
+# --------
+# Custom Korean translations for Frappe core strings with no upstream ko translation
+# (ERPNext app strings already have ko coverage via apps/erpnext's own translation catalog).
+fixtures = [
+	{"doctype": "Translation", "filters": [["language", "=", "ko"]]},
+]
+
