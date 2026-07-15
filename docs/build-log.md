@@ -40,4 +40,5 @@ git 커밋 이력으로 충분하다.
 | 2026-07-15 | Claude Code | `bench get-app --branch version-16 erpnext` + `install-app erpnext` | development.localhost | 성공 | erpnext 16.28.0 |
 | 2026-07-15 | Claude Code | `bench new-app --no-git babipa_erp` + `install-app babipa_erp` | development.localhost | 성공 | 최초 앱 스캐폴딩. `--no-git`으로 생성(버전관리는 build_erp_m 저장소가 담당) |
 | 2026-07-15 | Claude Code | Language `ko` 레코드 `enabled=1`로 수정, Administrator 사용자 language=`ko` 설정 | development.localhost | 성공 | Setup Wizard의 언어 선택 위젯은 "완역" curated 목록이라 한국어가 안 보였을 뿐, Language 자체는 이미 존재 |
+| 2026-07-15 | Claude Code | 표준 DocType 이름 425개 + 공통 액션/상태 단어 68개 한국어 Translation 레코드 추가(총 504개) + `bench export-fixtures --app babipa_erp` | development.localhost | 성공 | Frappe 코어 6,225개 미번역 문자열 중 고빈도 노출 계층(DocType명·Save/Submit/Status 등)만 우선 처리. DocType 폼 내부 필드 라벨은 별도의 더 큰 계층으로 미처리 |
 | 2026-07-15 | Claude Code | Frappe 코어 문구 11개 한국어 Translation 레코드 추가(Home·Notification·Search 등) + `bench export-fixtures --app babipa_erp` | development.localhost | 성공 | ERPNext 앱 문구는 이미 자체 ko 번역(5,848개) 보유, Frappe 코어만 상류에 ko 번역이 없어 직접 채움. `apps/babipa_erp/babipa_erp/fixtures/translation.json`으로 export, `hooks.py`에 `fixtures` 훅 신설 |
