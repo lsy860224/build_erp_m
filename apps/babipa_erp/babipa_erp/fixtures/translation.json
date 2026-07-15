@@ -8253,5 +8253,18 @@
   "name": "ga31068bms",
   "source_text": "Manufacturing",
   "translated_text": "제조"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "ko",
+  "modified": "2026-07-15 17:13:19.720990",
+  "name": "2pt7kr7sfq",
+  "source_text": "Branch",
+  "translated_text": "지점"
  }
 ]
