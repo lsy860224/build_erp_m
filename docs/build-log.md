@@ -32,5 +32,10 @@ git 커밋 이력으로 충분하다.
 
 ## 이력
 
-> 아직 정식 빌드가 시작되지 않았습니다 (Phase 0 — 툴킷 구축 + 요구사항 수집 단계).
-> `bench new-app`을 처음 실행하는 순간부터 아래에 기록을 시작하세요.
+| 날짜/시각 | 작업자 | 명령/작업 | 대상(사이트/앱) | 결과 | 비고 |
+|---|---|---|---|---|---|
+| 2026-07-15 | Claude Code | `bench init --frappe-branch version-16 frappe-bench` | - | 성공 | 최초 시도는 `--frappe-branch` 미지정으로 `develop`(v17)로 초기화돼 erpnext 설치 불가 → 재시도. 상세 원인은 `docs/dev-environment.md` |
+| 2026-07-15 | Claude Code | `bench new-site development.localhost` | development.localhost | 성공 | admin 비밀번호 `admin`(로컬 전용 기본값) |
+| 2026-07-15 | Claude Code | `bench --site development.localhost set-config developer_mode 1` | development.localhost | 성공 | |
+| 2026-07-15 | Claude Code | `bench get-app --branch version-16 erpnext` + `install-app erpnext` | development.localhost | 성공 | erpnext 16.28.0 |
+| 2026-07-15 | Claude Code | `bench new-app --no-git babipa_erp` + `install-app babipa_erp` | development.localhost | 성공 | 최초 앱 스캐폴딩. `--no-git`으로 생성(버전관리는 build_erp_m 저장소가 담당) |

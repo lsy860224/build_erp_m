@@ -70,4 +70,5 @@
 | [`docs/commit-push-policy.md`](docs/commit-push-policy.md) | 커밋 로그 메커니즘 + 커밋/Push 필수 규칙·절차·예외 |
 | [`docs/build-log.md`](docs/build-log.md) | 정식 빌드 이후 시스템 조작 이력 (기록 대상/형식 스펙 겸함) |
 | [`docs/app-directory-structure.md`](docs/app-directory-structure.md) | babipa_erp 앱 디렉토리 구조 |
+| [`docs/dev-environment.md`](docs/dev-environment.md) | 로컬 Docker+bench 개발 환경 실행법·아키텍처 결정 근거(Windows 바인드 마운트 제약 우회 등) |
 | [`docs/research/`](docs/research/) | 착수 전 리서치 참고자료 (미확정 문서 포함, `CLAUDE.md`와 상충 시 이 파일이 우선) |
