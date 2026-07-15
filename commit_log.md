@@ -6,11 +6,13 @@
 > pushed 여부는 이 스크립트가 마지막으로 실행된 시점 기준 `origin/main`로 판단합니다 —
 > 최신 원격 상태를 반영하려면 실행 전에 `git fetch`를 먼저 실행하세요.
 
-생성 시각: 2026-07-15 16:33:10
+생성 시각: 2026-07-15 16:43:27
 브랜치: `main`
 
 | 날짜 | 커밋 | 메시지 | GitHub Push |
 |---|---|---|---|
+| 2026-07-15 16:43 | `d3f14b8` | Fix Manufacturing mistranslation (조작 -> 제조) | ✅ |
+| 2026-07-15 16:33 | `8e745d4` | Update commit_log.md pushed status after previous push | ✅ |
 | 2026-07-15 16:33 | `f0682d1` | Log DocType field-label translation work in build-log.md | ✅ |
 | 2026-07-15 16:32 | `5a2c9ff` | Update commit_log.md pushed status after previous push | ✅ |
 | 2026-07-15 16:32 | `12e7af1` | Add Korean field-label translations for 6 core DocTypes | ✅ |
