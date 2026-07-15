@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# commit_log.md 자동 갱신. 실패해도 커밋 자체를 막지 않는다.
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+bash "$REPO_ROOT/scripts/update-commit-log.sh" || true
+echo "(post-commit) commit_log.md 갱신됨 — push 후에는 'bash scripts/update-commit-log.sh'를 한 번 더 실행하세요."

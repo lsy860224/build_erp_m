@@ -1,3 +1,6 @@
+> **문서 상태**: 리서치 참고자료 (AI 딥리서치 보고서). 이 프로젝트의 실제 결정은 루트 [`CLAUDE.md`](../../CLAUDE.md)를 따른다.
+> `CLAUDE.md`가 채택한 "ERPNext(Frappe) 기반 + `babipa_erp` 커스텀 앱" 방향의 근거 자료로, `.claude/agents`·`.claude/commands`·`.claude/skills` 툴킷 설계에 반영되었다. 인용 링크는 검증되지 않았으므로 실제 적용 전 재확인할 것.
+
 # **ERPNext 자체 구축 및 Claude Code 기반 지능형 자율 개발 환경 통합 아키텍처**
 
 현대의 전사적 자원 관리(ERP) 시스템은 기업의 재무, 인사, 제조, 유통 등 핵심 비즈니스 프로세스를 관장하는 방대한 생태계이다. 이러한 생태계에서 파이썬(Python)과 Node.js 기반의 오픈소스 프레임워크인 Frappe 위에 구축된 ERPNext는 그 유연성과 확장성 덕분에 전 세계적으로 광범위하게 채택되고 있다. 하지만 다중 테넌트(Multi-tenant) 아키텍처, 복잡한 데이터베이스 스키마, 그리고 프레임워크 고유의 ORM(Object-Relational Mapping) 및 메타데이터 주도(Metadata-driven) 개발 방식은 초기 인프라 구축과 맞춤형 모듈(Custom App) 개발에 상당한 학습 곡선을 요구한다.  
