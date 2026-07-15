@@ -8227,5 +8227,31 @@
   "name": "920mj1j0pb",
   "source_text": "Taxes and Charges Deducted (Company Currency)",
   "translated_text": "차감된 세금 및 요금(회사 통화)"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "ko",
+  "modified": "2026-07-15 16:30:52.566145",
+  "name": "9tuflt6vi6",
+  "source_text": "Item",
+  "translated_text": "품목"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "ko",
+  "modified": "2026-07-15 16:41:45.893517",
+  "name": "ga31068bms",
+  "source_text": "Manufacturing",
+  "translated_text": "제조"
  }
 ]
