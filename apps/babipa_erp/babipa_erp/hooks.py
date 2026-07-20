@@ -277,5 +277,13 @@ fixtures = [
 			]
 		],
 	},
+	# 경리 Role: docs/decisions.md §5.4 권한 Role Matrix(5개 역할) 중 1번째 구현.
+	# 초기 권한 범위는 §4.5·§5.4에서 명시적으로 결정된 "내부 정합용 전표"에 한정 —
+	# Journal Entry/Payment Entry는 RWCD+Submit/Cancel/Amend(경리가 직접 전표를 확정),
+	# GL Entry는 Read-only(시스템이 자동 생성하는 원장이라 수동 생성 대상 아님).
+	# Purchase/Sales Invoice, Supplier, Customer 등 나머지 DocType 접근 범위는
+	# 아직 미결정 — 후속 확인 필요.
+	{"doctype": "Role", "filters": [["name", "=", "경리"]]},
+	{"doctype": "Custom DocPerm", "filters": [["role", "=", "경리"]]},
 ]
 
