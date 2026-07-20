@@ -264,6 +264,10 @@ app_license = "mit"
 # (품목코드_260720.xlsx 15개 컬럼 중 표준 Item 필드로 커버되지 않는 항목).
 # Item Group: 품목코드_260720.xlsx 품목구분/중분류 분석 기반 초기 트리(설계 문서 참조).
 # ERPNext 데모 Item Group(Products/Raw Material 등)은 포함하지 않도록 이름으로 필터링.
+# Workstation Type / Operation: SMT·후가공·조립·검사포장 공정 분류 — Item 마스터의
+# custom_default_operation(PP/PC/AS/QT) 실측 분포와 대응하는 순수 분류 마스터라
+# Item Group과 동일하게 fixture로 관리(환경 간 항상 동일해야 함). 기존 ERPNext 기본
+# Operation("Assembly")은 포함하지 않도록 이름으로 필터링.
 fixtures = [
 	{"doctype": "Translation", "filters": [["language", "=", "ko"]]},
 	{"doctype": "Custom Field", "filters": [["dt", "=", "Item"]]},
@@ -275,6 +279,13 @@ fixtures = [
 				"in",
 				["완제품", "반제품", "원재료", "부재료", "상품", "일반반제품", "PCB ASSY(반제품)", "PCB ASSY(원재료)"],
 			]
+		],
+	},
+	{"doctype": "Workstation Type", "filters": [["name", "in", ["SMT", "후가공", "조립", "검사·포장"]]]},
+	{
+		"doctype": "Operation",
+		"filters": [
+			["name", "in", ["후가공 (PP)", "PCB ASSY·SMT (PC)", "조립 (AS)", "검사·포장 (QT)"]]
 		],
 	},
 	# 경리 Role: docs/decisions.md §5.4 권한 Role Matrix(5개 역할) 중 1번째 구현.

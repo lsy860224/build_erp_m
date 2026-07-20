@@ -1,0 +1,187 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 0,
+ "autoname": "field:equipment_code",
+ "creation": "2026-07-20 00:00:00.000000",
+ "custom": 0,
+ "doctype": "DocType",
+ "document_type": "Setup",
+ "engine": "InnoDB",
+ "field_order": [
+  "equipment_code",
+  "equipment_name",
+  "column_break_1",
+  "equipment_type",
+  "workstation",
+  "status",
+  "section_break_mfr",
+  "manufacturer",
+  "model",
+  "column_break_2",
+  "install_date",
+  "section_break_cal",
+  "calibration_required",
+  "calibration_cert_no",
+  "column_break_3",
+  "calibration_due_date",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "equipment_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "장비코드",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "equipment_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "장비명",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "equipment_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "장비유형",
+   "options": "SMT 마운터\n리플로우 오븐\nAOI\nSPI\n초음파세정기\n라우터\n압입기\n토크드라이버\n지그\n기타",
+   "reqd": 1
+  },
+  {
+   "fieldname": "workstation",
+   "fieldtype": "Link",
+   "label": "워크스테이션",
+   "options": "Workstation"
+  },
+  {
+   "default": "가동",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "상태",
+   "options": "가동\n정지\n점검중\n폐기",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_mfr",
+   "fieldtype": "Section Break",
+   "label": "제조정보"
+  },
+  {
+   "description": "테스트 데이터에서는 공란 유지 — 실제 제조사 확인 전까지 지어내지 않음",
+   "fieldname": "manufacturer",
+   "fieldtype": "Data",
+   "label": "제조사"
+  },
+  {
+   "description": "테스트 데이터에서는 공란 유지",
+   "fieldname": "model",
+   "fieldtype": "Data",
+   "label": "모델명"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "install_date",
+   "fieldtype": "Date",
+   "label": "설치일"
+  },
+  {
+   "fieldname": "section_break_cal",
+   "fieldtype": "Section Break",
+   "label": "교정관리"
+  },
+  {
+   "default": "0",
+   "fieldname": "calibration_required",
+   "fieldtype": "Check",
+   "label": "교정대상여부"
+  },
+  {
+   "description": "실제 교정성적서 발급 전까지 공란 유지 — 실제처럼 보이는 번호를 지어내지 않음",
+   "fieldname": "calibration_cert_no",
+   "fieldtype": "Data",
+   "label": "교정성적서번호"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "calibration_due_date",
+   "fieldtype": "Date",
+   "label": "차기교정예정일"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "비고"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-07-20 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Babipa Erp",
+ "name": "Equipment",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Manufacturing Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Manufacturing User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Quality Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

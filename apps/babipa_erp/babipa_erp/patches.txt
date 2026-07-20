@@ -6,3 +6,5 @@
 # Patches added in this section will be executed after doctypes are migrated
 babipa_erp.patches.v0_0.create_finished_goods_qi_template_shells
 babipa_erp.patches.v0_0.import_item_master_260720
+babipa_erp.patches.v0_0.create_manufacturing_masters_260720
+babipa_erp.patches.v0_0.create_test_bom_production_data_260720

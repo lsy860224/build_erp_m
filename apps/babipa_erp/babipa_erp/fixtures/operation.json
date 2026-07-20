@@ -1,0 +1,58 @@
+[
+ {
+  "batch_size": 1,
+  "create_job_card_based_on_batch_size": 0,
+  "description": "후가공 공정 — Item 마스터 custom_default_operation='PP' 42건과 대응",
+  "docstatus": 0,
+  "doctype": "Operation",
+  "is_corrective_operation": 0,
+  "modified": "2026-07-20 17:33:06.966349",
+  "name": "후가공 (PP)",
+  "quality_inspection_template": null,
+  "sub_operations": [],
+  "total_operation_time": 0.0,
+  "workstation": null
+ },
+ {
+  "batch_size": 1,
+  "create_job_card_based_on_batch_size": 0,
+  "description": "PCB ASSY/SMT 공정 — Item 마스터 custom_default_operation='PC' 14건과 대응",
+  "docstatus": 0,
+  "doctype": "Operation",
+  "is_corrective_operation": 0,
+  "modified": "2026-07-20 17:33:06.983101",
+  "name": "PCB ASSY·SMT (PC)",
+  "quality_inspection_template": null,
+  "sub_operations": [],
+  "total_operation_time": 0.0,
+  "workstation": null
+ },
+ {
+  "batch_size": 1,
+  "create_job_card_based_on_batch_size": 0,
+  "description": "조립 공정 — Item 마스터 custom_default_operation='AS' 25건과 대응",
+  "docstatus": 0,
+  "doctype": "Operation",
+  "is_corrective_operation": 0,
+  "modified": "2026-07-20 17:33:06.985653",
+  "name": "조립 (AS)",
+  "quality_inspection_template": null,
+  "sub_operations": [],
+  "total_operation_time": 0.0,
+  "workstation": null
+ },
+ {
+  "batch_size": 1,
+  "create_job_card_based_on_batch_size": 0,
+  "description": "검사·포장 공정 — Item 마스터 custom_default_operation='QT' 21건(완제품 전량)과 대응",
+  "docstatus": 0,
+  "doctype": "Operation",
+  "is_corrective_operation": 0,
+  "modified": "2026-07-20 17:33:06.988380",
+  "name": "검사·포장 (QT)",
+  "quality_inspection_template": null,
+  "sub_operations": [],
+  "total_operation_time": 0.0,
+  "workstation": null
+ }
+]

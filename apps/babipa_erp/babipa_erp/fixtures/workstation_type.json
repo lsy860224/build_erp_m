@@ -1,0 +1,42 @@
+[
+ {
+  "description": null,
+  "docstatus": 0,
+  "doctype": "Workstation Type",
+  "hour_rate": 0.0,
+  "modified": "2026-07-20 17:33:06.796220",
+  "name": "SMT",
+  "workstation_costs": [],
+  "workstation_type": "SMT"
+ },
+ {
+  "description": null,
+  "docstatus": 0,
+  "doctype": "Workstation Type",
+  "hour_rate": 0.0,
+  "modified": "2026-07-20 17:33:06.910431",
+  "name": "후가공",
+  "workstation_costs": [],
+  "workstation_type": "후가공"
+ },
+ {
+  "description": null,
+  "docstatus": 0,
+  "doctype": "Workstation Type",
+  "hour_rate": 0.0,
+  "modified": "2026-07-20 17:33:06.913901",
+  "name": "조립",
+  "workstation_costs": [],
+  "workstation_type": "조립"
+ },
+ {
+  "description": null,
+  "docstatus": 0,
+  "doctype": "Workstation Type",
+  "hour_rate": 0.0,
+  "modified": "2026-07-20 17:33:06.920169",
+  "name": "검사·포장",
+  "workstation_costs": [],
+  "workstation_type": "검사·포장"
+ }
+]
