@@ -260,7 +260,22 @@ app_license = "mit"
 # --------
 # Custom Korean translations for Frappe core strings with no upstream ko translation
 # (ERPNext app strings already have ko coverage via apps/erpnext's own translation catalog).
+# Item Custom Fields: docs/item-doctype-design.md 필드 매핑 설계 반영
+# (품목코드_260720.xlsx 15개 컬럼 중 표준 Item 필드로 커버되지 않는 항목).
+# Item Group: 품목코드_260720.xlsx 품목구분/중분류 분석 기반 초기 트리(설계 문서 참조).
+# ERPNext 데모 Item Group(Products/Raw Material 등)은 포함하지 않도록 이름으로 필터링.
 fixtures = [
 	{"doctype": "Translation", "filters": [["language", "=", "ko"]]},
+	{"doctype": "Custom Field", "filters": [["dt", "=", "Item"]]},
+	{
+		"doctype": "Item Group",
+		"filters": [
+			[
+				"item_group_name",
+				"in",
+				["완제품", "반제품", "원재료", "부재료", "상품", "일반반제품", "PCB ASSY(반제품)", "PCB ASSY(원재료)"],
+			]
+		],
+	},
 ]
 
