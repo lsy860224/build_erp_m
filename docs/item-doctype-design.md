@@ -168,6 +168,67 @@ DocType에 HKMC 쪽 거래선(예: 현대자동차/기아 법인 각각, 또는 
 개발 사이트에서 완제품 1건(Serial)·반제품 PCB ASSY 1건(Batch)을 실제로 저장해 이 조합이
 스키마 오류 없이 동작함을 확인했다(검증 후 삭제).
 
+## 6.1 완제품 21건 Quality Inspection Template 껍데기 (2026.07.20 후속)
+
+`hkmc-compliance` 리뷰가 지적한 문제: `custom_inspection_type`(검사구분)이 "전수검사"라고
+표시돼 있어도 표준 `quality_inspection_template` 연결이 없으면 실제 Quality Inspection
+문서 생성을 강제하지 않는 라벨뿐인 상태였다. 이를 보완하기 위해 완제품 21건
+(`품목구분=완제품` AND `검사구분=전수검사`, `docs/품목코드_260720.XLSX` 재확인 —
+`JGP26-A0301` 등 SENSOR ASSY/RADAR UNIT 계열)에 대응하는 **Quality Inspection Template
+껍데기 21건**을 만들었다.
+
+**여기서도 실제 검사 파라미터(측정 항목, 규격 상하한, 샘플링 사이즈/AQL)는 채우지 않았다** —
+도면/Control Plan/검사기준서 원본 자료가 아직 없다고 사용자가 명시적으로 확인했다
+(CLAUDE.md 임의 데이터 위·변조/추정 금지 원칙). "껍데기"의 구체적 내용:
+
+- **템플릿 이름**: `<품목코드> - <항목명>` 형식(예: `JGP26-A0301 - SENSOR ASSY - FR DR, LH
+  (SWING DOOR)`) — Quality Inspection Template DocType 자체에는 Item을 가리키는 Link
+  필드가 없어(`quality_inspection_template_name` + `item_quality_inspection_parameter`
+  Table 두 개뿐), 이름에 품목코드를 포함시켜 대응관계를 명시했다.
+- **빈 검사 파라미터 테이블 저장 여부 확인**: 개발 사이트에서 실제로 시도한 결과
+  `item_quality_inspection_parameter`(Table 필드)가 **`reqd=1`이라 빈 테이블로는
+  `MandatoryError`가 나서 저장이 막힌다**는 것을 확인했다. 게다가 자식 테이블
+  `Item Quality Inspection Parameter`의 `specification` 필드는 겉보기와 달리 Data가
+  아니라 **`Quality Inspection Parameter`(마스터 DocType)로의 Link**이고 이것도
+  `reqd=1`이다. 따라서:
+  - 21건이 공유하는 placeholder 마스터 `Quality Inspection Parameter` 1건을 먼저
+    생성(`parameter`(=name) = `TBD - 검사 파라미터 미정`, `description`에 아래 껍데기
+    문구 기재).
+  - 각 템플릿에 그 placeholder를 참조하는 행을 정확히 1개씩만 넣고, `numeric=0`(체크
+    해제 — 안 그러면 `min_value`/`max_value` Float 필드가 기본값 0.0으로 채워져 마치
+    "규격 0~0"처럼 보일 위험이 있어 의도적으로 껐다), `value`(Acceptance Criteria
+    Value) 필드에 `TBD — 실제 검사 파라미터 미정, 품질부서 확인 필요`를 명시적으로
+    적어 절대 실제 값처럼 보이지 않게 했다.
+- **비고**: Quality Inspection Template DocType 자체엔 설명/비고 필드가 없어(Data+Table
+  두 필드뿐), 대신 각 템플릿 문서에 Frappe Comment로
+  `2026.07.20 껍데기 생성 — 도면/Control Plan 확보 후 품질부서가 실제 파라미터 채울 것`을
+  남겼다(감사 시 즉시 확인 가능).
+- **Item 연결은 아직 하지 않음**: 완제품 21건의 실 Item 레코드가 아직 없다(289건 임포트는
+  §5 `stock_uom` 공백 189건 등 미결정 이슈로 아직 진행 중이 아님). **완제품 임포트 시
+  frappe-backend가 이 21개 템플릿을 해당 Item의 `quality_inspection_template` 필드로
+  연결할 것** — 템플릿 이름이 품목코드를 포함하므로 매칭은 기계적으로 가능하다.
+
+**버전관리 방식 — fixtures가 아니라 patch로 결정**: `apps/babipa_erp/babipa_erp/patches/
+v0_0/create_finished_goods_qi_template_shells.py`(post_model_sync)로 구현하고
+`hooks.py`의 `fixtures` 목록에는 넣지 않았다. 근거:
+
+1. 이 21건은 Item Group(§7의 8건, 완제품/반제품/원재료/부재료/상품 등 분류 체계)이나
+   Custom Field처럼 **앱이 항상 동일하게 보유해야 하는 스키마/분류 구성**이 아니라,
+   개별 품목코드 1:1에 대응하는 **인스턴스 데이터**다 — 이번 289건 Item 레코드 자체를
+   "설계만 하고 실제 임포트는 후속 patch/스크립트로 넘긴다"(본 문서 최상단, §5, §7)고
+   이미 정한 것과 같은 성격이라 동일한 경로를 따르는 것이 일관적이다.
+2. fixtures는 `bench migrate`/`bench install-app` 때마다 **정확히 같은 상태로 동기화**되는
+   것을 전제로 한다(설정값·분류 체계처럼 "항상 이래야 하는" 데이터에 적합). 반면 이 21건은
+   품질부서가 도면 확보 후 실제 파라미터로 **직접 수정할 대상**이다 — 만약 fixtures로
+   등록해두면, 향후 개발 사이트에서 `bench export-fixtures`를 실행하는 시점에 운영에서
+   이미 채워둔 실제 파라미터가 스냅샷 시점의 구조로 덮어써지거나, 반대로 운영 쪽
+   `bench migrate` 시 fixtures가 재적용되며 껍데기 상태로 되돌아갈 위험이 있다. patch는
+   `Patch Log`에 기록되어 정상적으로는 한 번만 실행되고(멱등성 가드도 코드에 포함:
+   `frappe.db.exists`로 이미 있으면 건너뜀), 이후 문서 내용 편집과 무관하게 재실행되지
+   않는다.
+3. 개발 사이트에서 `bench --site development.localhost migrate`로 최초 실행·21건 생성을
+   확인했고, 재실행(2회차 `migrate`)에서도 중복 생성이나 에러 없이 안전함을 확인했다.
+
 ## 7. 산출물 반영 상태
 
 - **Custom Field 11개**(9개 + `hkmc-compliance` 리뷰 보완 2건, 2026.07.20 후속) —
@@ -181,6 +242,11 @@ DocType에 HKMC 쪽 거래선(예: 현대자동차/기아 법인 각각, 또는 
   완료(생성한 이름만 명시적으로 필터, ERPNext 데모 그룹은 미포함).
 - `apps/babipa_erp/babipa_erp/hooks.py`의 `fixtures` 목록에 위 두 항목 추가.
 - 289건 데이터 자체는 임포트하지 않음 — 이번 세션 범위 밖.
+- **Quality Inspection Template 껍데기 21건**(2026.07.20 후속, §6.1) —
+  `apps/babipa_erp/babipa_erp/patches/v0_0/create_finished_goods_qi_template_shells.py`
+  (patch, fixtures 아님) + placeholder `Quality Inspection Parameter` 마스터 1건.
+  `bench --site development.localhost migrate`로 실행·검증 완료. 완제품 Item 임포트 시
+  `quality_inspection_template` 연결은 후속.
 
 ## 8. CLAUDE.md 체크리스트 반영
 
@@ -196,3 +262,8 @@ DocType에 HKMC 쪽 거래선(예: 현대자동차/기아 법인 각각, 또는 
       문제가 없는지, (2) §6 Serial/Batch 매핑이 HKMC ES가 요구하는 로트 추적 단위와
       맞는지, (3) `custom_inspection_type`(전수/샘플링/무검사) 3분류가 SQ 감사 시
       요구되는 검사기록 체계와 정합적인지.
+      → (3)에 대한 후속 보완: `custom_inspection_type`이 실제 검사기록 생성을 강제하지
+      않는 라벨뿐이라는 지적을 받아 §6.1에서 완제품 21건 Quality Inspection Template
+      껍데기를 만들었다. 실제 검사 파라미터는 도면/Control Plan 확보 전까지 값이 없다 —
+      이 상태로 감사 대응이 충분한지(빈 템플릿 존재 자체가 "체계는 있다"는 근거로
+      인정되는지, 아니면 파라미터 없이는 불충분한지)는 추가 `hkmc-compliance` 확인 필요.
