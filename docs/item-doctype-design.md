@@ -100,6 +100,8 @@ All Item Groups (ERPNext 표준 루트, 기존 데모 그룹 Products/Raw Materi
 | 13 | 검사구분 | **Custom Field** `custom_inspection_type`(Select: 전수검사/샘플링검사/무검사) + 표준 필드 `inspection_required_before_delivery`/`inspection_required_before_purchase`(Check) | ERPNext 표준은 "검사 필요 여부"만 boolean으로 표현하고 전수/샘플링 구분이 없음 → Custom Field로 한국어 3분류를 보존하고, 완제품처럼 표준 boolean 게이트가 필요한 경우 `무검사=0`, `전수/샘플링=1`로 함께 설정. `quality_inspection_template` 연결은 검사 SOP가 실제로 정의된 뒤(§6 참조) 진행 |
 | 14 | 작업공정 | **Custom Field** `custom_default_operation`(Select: PP/AS/QT/PC) | Routing/Operation 개념에 더 가까움 — §3 참조, 이번 범위에서는 Item 속성으로만 임시 보관하고 BOM/Routing 설계는 별도 세션으로 미룸 |
 | 15 | Array수량(캐비티) | **Custom Field** `custom_array_qty`(Int) | PCB ASSY(SMT 패널)뿐 아니라 `HOUSING ASSY`/`RADOME ASSY`/`BRACKET` 등 사출 금형 품목에도 값이 있음(19건 전수 확인) — "PCB 패널 전용"이 아니라 "생산 단위당 배열/캐비티 수량"이라는 더 넓은 개념. BOM/backflush 수량 계산의 입력값이 될 수 있는 물리 스펙이라 판단해 Item 레벨 속성으로 유지 |
+| - | (xlsx에 없음, `hkmc-compliance` 리뷰 보완) | **Custom Field** `custom_safety_critical`(Check, default 0) | §6 완제품=Serial/그외=Batch 기본규칙의 예외 오버라이드 플래그. HKMC 도면상 특별특성(Special Characteristic) 지정 품목을 개별추적(Serial) 대상으로 전환할 근거 구조 — **지금은 어떤 품목이 해당되는지 판단하지 않고 전부 기본값 0**, 도면 검토는 사용자/품질부서 별도 진행 |
+| - | (xlsx에 없음, `hkmc-compliance` 리뷰 보완) | **Custom Field** `custom_es_standard_code`(Data) + `custom_es_standard_revision`(Data) | 이 품목 `custom_inspection_type`(검사구분)의 근거가 된 HKMC ES 표준 코드·개정판을 감사 시 즉시 답하기 위한 참조 필드. 원본 `품목코드_260720.xlsx`에 이 정보가 없어 **필드 구조만 생성, 값은 비워둠**(후속 채움 대상) |
 
 ## 3. `제조유형`·`작업공정` — Item 마스터 범위 밖(BOM/Routing) 판단 근거
 
@@ -168,8 +170,13 @@ DocType에 HKMC 쪽 거래선(예: 현대자동차/기아 법인 각각, 또는 
 
 ## 7. 산출물 반영 상태
 
-- **Custom Field 9개** — `apps/babipa_erp/babipa_erp/fixtures/custom_field.json`으로
-  export 완료(`dt=Item` 필터).
+- **Custom Field 11개**(9개 + `hkmc-compliance` 리뷰 보완 2건, 2026.07.20 후속) —
+  `apps/babipa_erp/babipa_erp/fixtures/custom_field.json`으로 export 완료(`dt=Item` 필터,
+  hooks.py 필터 변경 없이 기존 필터가 신규 필드도 그대로 포착).
+  - 보완분: `custom_safety_critical`(Check, default 0), `custom_es_standard_code`(Data),
+    `custom_es_standard_revision`(Data) — 기존 9개와 같은 섹션에 `insert_after` 체인으로
+    이어붙임(`custom_array_qty` → `custom_safety_critical` → `custom_es_standard_code` →
+    `custom_es_standard_revision`). 값은 채우지 않고 구조만 생성.
 - **Item Group 8건** — `apps/babipa_erp/babipa_erp/fixtures/item_group.json`으로 export
   완료(생성한 이름만 명시적으로 필터, ERPNext 데모 그룹은 미포함).
 - `apps/babipa_erp/babipa_erp/hooks.py`의 `fixtures` 목록에 위 두 항목 추가.
