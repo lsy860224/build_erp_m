@@ -296,5 +296,15 @@ fixtures = [
 	# 아직 미결정 — 후속 확인 필요.
 	{"doctype": "Role", "filters": [["name", "=", "경리"]]},
 	{"doctype": "Custom DocPerm", "filters": [["role", "=", "경리"]]},
+	# Track Changes(감사 추적성, §5.4): Item/BOM/Work Order/Journal Entry/Payment Entry는
+	# ERPNext 기본값이 이미 track_changes=1이라 별도 조치 불필요(콘솔 확인 완료).
+	# Quality Inspection·GL Entry만 기본값 0이라 Property Setter로 1로 전환.
+	{
+		"doctype": "Property Setter",
+		"filters": [
+			["doc_type", "in", ["GL Entry", "Quality Inspection"]],
+			["property", "=", "track_changes"],
+		],
+	},
 ]
 
