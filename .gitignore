@@ -24,3 +24,9 @@ logs/
 # 이 저장소는 GitHub public repo다. 실 단가·품목코드·차종 매핑 등 회사 실데이터가
 # 담긴 파일은 절대 커밋하지 않는다 — 로컬에만 두고 참조는 경로로만 남긴다.
 docs/품목코드_260720.XLSX
+
+# 위와 동일한 원본의 작업용 사본 (2026.07.20 289건 임포트 patch용).
+# apps/babipa_erp는 컨테이너에 bind mount되어 patch가 런타임에 이 경로에서 직접
+# 읽는다 — 매출/매입단가 등 실단가를 patch 코드(.py)에 리터럴로 박아넣지 않기 위한
+# 조치. 이 사본이 없으면 patch는 조용히 스킵한다(다른 환경/공개 clone에서 안전).
+apps/babipa_erp/babipa_erp/patches/v0_0/data/item_master_260720.xlsx

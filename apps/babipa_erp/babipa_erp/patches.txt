@@ -5,3 +5,4 @@
 [post_model_sync]
 # Patches added in this section will be executed after doctypes are migrated
 babipa_erp.patches.v0_0.create_finished_goods_qi_template_shells
+babipa_erp.patches.v0_0.import_item_master_260720
