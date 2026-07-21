@@ -307,9 +307,11 @@ fixtures = [
 	# PPAP/APQP/CP/PFMEA/FAI/4M Change 6개 DocType은 이번에 처음 신설(§ 아래 참조) —
 	# `docs/decisions.md` 2026.07.20 Track Changes 행이 예고한 "로드맵 3단계"를 앞당겨
 	# 이번 세션에서 §5.4 매트릭스 완성과 함께 구현.
-	# 평가(시험평가/Validation, 2026.07.21 사용자 지시로 6번째 역할 추가): 아직 DocType별
-	# Custom DocPerm은 없음(§5.4 5개 역할과 별개 트랙) — System Manager를 우선 겸임해
-	# §5.4 "System Manager 2인 이내" 원칙의 첫 번째 자리로 배정, 두 번째는 미정.
+	# 평가(시험평가/Validation, 2026.07.21 사용자 지시로 6번째 역할 추가): System Manager를
+	# 우선 겸임해 §5.4 "System Manager 2인 이내" 원칙의 첫 번째 자리로 배정, 두 번째는 미정.
+	# DocType 권한은 FAI(초도품검사)·PPAP Submission·APQP Gate에 RWC(Submit 없음, 관리자가
+	# 확정 — 기존 패턴 그대로) — DV/PV 검증·양산 승인 게이트에 직결되는 문서만 우선 부여,
+	# Quality Inspection/Control Plan/PFMEA(품질의 상시 QC 업무)는 겹치지 않게 제외.
 	{"doctype": "Role", "filters": [["name", "in", ["경리", "관리자", "구매", "생산", "품질", "평가"]]]},
 	{"doctype": "Custom DocPerm", "filters": [["role", "in", ["경리", "관리자", "구매", "생산", "품질", "평가"]]]},
 	# Track Changes(감사 추적성, §5.4): Item/BOM/Work Order/Journal Entry/Payment Entry는
