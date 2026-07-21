@@ -1,0 +1,124 @@
+{
+ "actions": [],
+ "autoname": "APQP-.YYYY.-.#####",
+ "creation": "2026-07-21 00:00:00.000000",
+ "custom": 0,
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "item",
+  "phase",
+  "column_break_1",
+  "target_date",
+  "actual_date",
+  "gate_status",
+  "section_break_links",
+  "linked_control_plan",
+  "linked_pfmea",
+  "remarks",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "품목",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "phase",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "단계",
+   "options": "1.계획\n2.제품설계개발\n3.공정설계개발\n4.제품공정검증\n5.피드백평가및지속개선",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "target_date",
+   "fieldtype": "Date",
+   "label": "목표일"
+  },
+  {
+   "fieldname": "actual_date",
+   "fieldtype": "Date",
+   "label": "실제완료일"
+  },
+  {
+   "default": "진행중",
+   "fieldname": "gate_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "게이트 상태",
+   "options": "진행중\n승인\n보류"
+  },
+  {
+   "fieldname": "section_break_links",
+   "fieldtype": "Section Break",
+   "label": "연계 문서"
+  },
+  {
+   "fieldname": "linked_control_plan",
+   "fieldtype": "Link",
+   "label": "연계 Control Plan",
+   "options": "Control Plan"
+  },
+  {
+   "fieldname": "linked_pfmea",
+   "fieldtype": "Link",
+   "label": "연계 PFMEA",
+   "options": "PFMEA"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "비고"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "APQP Gate",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-07-21 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Babipa Erp",
+ "name": "APQP Gate",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

@@ -1,0 +1,154 @@
+{
+ "actions": [],
+ "autoname": "PPAP-.YYYY.-.#####",
+ "creation": "2026-07-21 00:00:00.000000",
+ "custom": 0,
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "item",
+  "customer",
+  "column_break_1",
+  "submission_level",
+  "submission_date",
+  "initial_process_capability_ppk",
+  "section_break_links",
+  "linked_control_plan",
+  "linked_pfmea",
+  "linked_fai",
+  "column_break_2",
+  "status",
+  "section_break_elements",
+  "ppap_element",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "품목",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "고객",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "submission_level",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "제출수준",
+   "options": "1\n2\n3\n4\n5",
+   "reqd": 1
+  },
+  {
+   "fieldname": "submission_date",
+   "fieldtype": "Date",
+   "label": "제출일"
+  },
+  {
+   "description": "AIAG PPAP 18개 요소 중 최소 5개(PFMEA/Control Plan/초기공정능력/양산샘플/CSR)가 공정 실측 데이터 — 초기공정능력지수",
+   "fieldname": "initial_process_capability_ppk",
+   "fieldtype": "Float",
+   "label": "초기공정능력지수(Ppk)"
+  },
+  {
+   "fieldname": "section_break_links",
+   "fieldtype": "Section Break",
+   "label": "연계 문서"
+  },
+  {
+   "fieldname": "linked_control_plan",
+   "fieldtype": "Link",
+   "label": "연계 Control Plan",
+   "options": "Control Plan"
+  },
+  {
+   "fieldname": "linked_pfmea",
+   "fieldtype": "Link",
+   "label": "연계 PFMEA",
+   "options": "PFMEA"
+  },
+  {
+   "fieldname": "linked_fai",
+   "fieldtype": "Link",
+   "label": "연계 FAI",
+   "options": "FAI"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "제출대기",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "상태",
+   "options": "제출대기\n승인\n조건부승인\n거부",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_elements",
+   "fieldtype": "Section Break",
+   "label": "PPAP 요소 체크리스트"
+  },
+  {
+   "fieldname": "ppap_element",
+   "fieldtype": "Table",
+   "label": "PPAP 요소 체크리스트",
+   "options": "PPAP Element"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "PPAP Submission",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-07-21 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Babipa Erp",
+ "name": "PPAP Submission",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

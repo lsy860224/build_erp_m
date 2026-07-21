@@ -1,0 +1,76 @@
+{
+ "actions": [],
+ "creation": "2026-07-21 00:00:00.000000",
+ "custom": 0,
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "process_step",
+  "characteristic",
+  "specification",
+  "measurement_method",
+  "sample_size",
+  "sample_frequency",
+  "control_method",
+  "reaction_plan"
+ ],
+ "fields": [
+  {
+   "fieldname": "process_step",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "공정단계",
+   "reqd": 1
+  },
+  {
+   "fieldname": "characteristic",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "관리항목/특성"
+  },
+  {
+   "fieldname": "specification",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "규격"
+  },
+  {
+   "fieldname": "measurement_method",
+   "fieldtype": "Data",
+   "label": "측정방법"
+  },
+  {
+   "fieldname": "sample_size",
+   "fieldtype": "Data",
+   "label": "표본크기"
+  },
+  {
+   "fieldname": "sample_frequency",
+   "fieldtype": "Data",
+   "label": "주기"
+  },
+  {
+   "fieldname": "control_method",
+   "fieldtype": "Data",
+   "label": "관리방법"
+  },
+  {
+   "fieldname": "reaction_plan",
+   "fieldtype": "Small Text",
+   "label": "이상 시 조치"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-07-21 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Babipa Erp",
+ "name": "Control Plan Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

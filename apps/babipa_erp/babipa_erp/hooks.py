@@ -290,17 +290,23 @@ fixtures = [
 	},
 	# §5.4 권한 Role Matrix — 5개 역할(경리/관리자/구매/생산/품질) 전부 구현.
 	# 경리: 내부 정합용 전표(Journal Entry/Payment Entry) 담당, GL Entry는 Read-only.
-	# 구매: Purchase Order RWC(Submit 없음). 생산: Work Order/Job Card/Stock Entry RWC.
-	# 품질: Quality Inspection RWC. 넷 다 "실무진은 RWC 위주"(§5.4) 원칙 — 확정 권한은
-	# 관리자에 집중. 관리자: Purchase Order·Payment Entry(승인 게이트, §5.5) + Work
-	# Order/Job Card/Stock Entry/Quality Inspection까지 RWCD+Submit/Cancel/Amend —
-	# 뒤 4개는 별도 Workflow 없이 §5.4 role matrix의 단일 Submit 권한만으로 충분(§5.5
-	# 결정, Workflow는 PO·Payment Entry 2개뿐). 경리의 Payment Entry Submit/Cancel/
-	# Amend는 §5.5 워크플로우 도입 시 제거(아래 Workflow 항목 참조).
-	# Item/BOM(사용자 지정, 2026.07.21): Item은 구매·생산 RWC(둘 다 품목 마스터 작성
-	# 주체 — 구매는 원자재/구매품, 생산은 자체 공정 속성 필드). BOM은 생산 RWC(제조
-	# 레시피 작성 주체) + 품질 Read-only(PFMEA/Control Plan 등에서 구조 참조만, 작성
-	# 안 함) + 관리자 Submit/Cancel/Amend(BOM은 is_submittable=1이라 확정 권한 필요).
+	# 구매: Purchase Order·Purchase Receipt·Supplier RWC(Submit 없음), Item도 RWC(원자재/
+	# 구매품 마스터 작성 주체). 생산: Item(자체 공정 속성 필드)·BOM(제조 레시피)·Work
+	# Order·Job Card·Stock Entry·Sales Order·Delivery Note RWC, Stock Ledger Entry는
+	# Read-only. 품질: Quality Inspection·FAI·Control Plan·PFMEA·APQP Gate·PPAP
+	# Submission RWC, BOM은 Read-only(PFMEA/Control Plan 등에서 구조 참조만). 다섯 역할
+	# 다 "실무진은 RWC 위주"(§5.4) 원칙 — 확정 권한은 관리자에 집중. 관리자: Purchase
+	# Order·Payment Entry(승인 게이트, §5.5) + BOM/Work Order/Job Card/Stock
+	# Entry/Sales Order/Delivery Note/Quality Inspection/Purchase Receipt/FAI/Control
+	# Plan/PFMEA/APQP Gate/PPAP Submission/4M Change까지 RWCD+Submit/Cancel/Amend —
+	# 별도 Workflow 없이 §5.4 role matrix의 단일 Submit 권한만으로 충분(§5.5 결정,
+	# Workflow는 PO·Payment Entry 2개뿐). Item/Stock Ledger Entry는 is_submittable=0이라
+	# Submit 권한 자체가 없음. 경리의 Payment Entry Submit/Cancel/Amend는 §5.5 워크플로우
+	# 도입 시 제거(아래 Workflow 항목 참조). 4M Change는 생산 RWC(변경 기안)+품질 RW(재검증
+	# 필요 여부 검토)로 이원화 — 실제 변경은 현장(생산)에서 일어나므로 기안 주체는 생산.
+	# PPAP/APQP/CP/PFMEA/FAI/4M Change 6개 DocType은 이번에 처음 신설(§ 아래 참조) —
+	# `docs/decisions.md` 2026.07.20 Track Changes 행이 예고한 "로드맵 3단계"를 앞당겨
+	# 이번 세션에서 §5.4 매트릭스 완성과 함께 구현.
 	{"doctype": "Role", "filters": [["name", "in", ["경리", "관리자", "구매", "생산", "품질"]]]},
 	{"doctype": "Custom DocPerm", "filters": [["role", "in", ["경리", "관리자", "구매", "생산", "품질"]]]},
 	# Track Changes(감사 추적성, §5.4): Item/BOM/Work Order/Journal Entry/Payment Entry는

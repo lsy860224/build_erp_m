@@ -1,0 +1,165 @@
+{
+ "actions": [],
+ "autoname": "4MC-.YYYY.-.#####",
+ "creation": "2026-07-21 00:00:00.000000",
+ "custom": 0,
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "item",
+  "change_type",
+  "column_break_1",
+  "equipment",
+  "effective_date",
+  "section_break_desc",
+  "change_description",
+  "reason",
+  "section_break_flags",
+  "requires_customer_notification",
+  "requires_reverification",
+  "column_break_2",
+  "linked_fai",
+  "linked_ppap",
+  "status",
+  "remarks",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "품목",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "change_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "변경유형",
+   "options": "Man(작업자)\nMachine(설비)\nMaterial(자재)\nMethod(방법)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.change_type==\"Machine(설비)\"",
+   "fieldname": "equipment",
+   "fieldtype": "Link",
+   "label": "장비",
+   "options": "Equipment"
+  },
+  {
+   "fieldname": "effective_date",
+   "fieldtype": "Date",
+   "label": "적용일"
+  },
+  {
+   "fieldname": "section_break_desc",
+   "fieldtype": "Section Break",
+   "label": "변경 내용"
+  },
+  {
+   "fieldname": "change_description",
+   "fieldtype": "Small Text",
+   "label": "변경 내용"
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Small Text",
+   "label": "변경 사유"
+  },
+  {
+   "fieldname": "section_break_flags",
+   "fieldtype": "Section Break",
+   "label": "재검증"
+  },
+  {
+   "default": "1",
+   "fieldname": "requires_customer_notification",
+   "fieldtype": "Check",
+   "label": "고객사(HKMC) 통보 필요"
+  },
+  {
+   "default": "1",
+   "fieldname": "requires_reverification",
+   "fieldtype": "Check",
+   "label": "FAI/PPAP 재검증 필요"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "linked_fai",
+   "fieldtype": "Link",
+   "label": "연계 FAI",
+   "options": "FAI"
+  },
+  {
+   "fieldname": "linked_ppap",
+   "fieldtype": "Link",
+   "label": "연계 PPAP 제출",
+   "options": "PPAP Submission"
+  },
+  {
+   "default": "검토중",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "상태",
+   "options": "검토중\n승인\n반려\n재검증대기\n완료",
+   "reqd": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "비고"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "4M Change",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-07-21 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Babipa Erp",
+ "name": "4M Change",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

@@ -1,0 +1,92 @@
+{
+ "actions": [],
+ "creation": "2026-07-21 00:00:00.000000",
+ "custom": 0,
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "process_step",
+  "potential_failure_mode",
+  "potential_effect",
+  "severity",
+  "potential_cause",
+  "occurrence",
+  "current_control",
+  "detection",
+  "rpn",
+  "recommended_action"
+ ],
+ "fields": [
+  {
+   "fieldname": "process_step",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "공정단계",
+   "reqd": 1
+  },
+  {
+   "fieldname": "potential_failure_mode",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "잠재적 고장모드"
+  },
+  {
+   "fieldname": "potential_effect",
+   "fieldtype": "Data",
+   "label": "잠재적 영향"
+  },
+  {
+   "fieldname": "severity",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "심각도(S)"
+  },
+  {
+   "fieldname": "potential_cause",
+   "fieldtype": "Data",
+   "label": "잠재적 원인"
+  },
+  {
+   "fieldname": "occurrence",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "발생도(O)"
+  },
+  {
+   "fieldname": "current_control",
+   "fieldtype": "Data",
+   "label": "현재관리방법"
+  },
+  {
+   "fieldname": "detection",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "검출도(D)"
+  },
+  {
+   "fieldname": "rpn",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "RPN",
+   "read_only": 1
+  },
+  {
+   "fieldname": "recommended_action",
+   "fieldtype": "Small Text",
+   "label": "개선조치"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-07-21 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Babipa Erp",
+ "name": "PFMEA Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
