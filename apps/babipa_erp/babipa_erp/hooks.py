@@ -297,7 +297,10 @@ fixtures = [
 	# 뒤 4개는 별도 Workflow 없이 §5.4 role matrix의 단일 Submit 권한만으로 충분(§5.5
 	# 결정, Workflow는 PO·Payment Entry 2개뿐). 경리의 Payment Entry Submit/Cancel/
 	# Amend는 §5.5 워크플로우 도입 시 제거(아래 Workflow 항목 참조).
-	# 미결정: Item/BOM은 5개 역할 중 누가 담당인지 §5.4 원문에 특정 안 돼 있어 보류.
+	# Item/BOM(사용자 지정, 2026.07.21): Item은 구매·생산 RWC(둘 다 품목 마스터 작성
+	# 주체 — 구매는 원자재/구매품, 생산은 자체 공정 속성 필드). BOM은 생산 RWC(제조
+	# 레시피 작성 주체) + 품질 Read-only(PFMEA/Control Plan 등에서 구조 참조만, 작성
+	# 안 함) + 관리자 Submit/Cancel/Amend(BOM은 is_submittable=1이라 확정 권한 필요).
 	{"doctype": "Role", "filters": [["name", "in", ["경리", "관리자", "구매", "생산", "품질"]]]},
 	{"doctype": "Custom DocPerm", "filters": [["role", "in", ["경리", "관리자", "구매", "생산", "품질"]]]},
 	# Track Changes(감사 추적성, §5.4): Item/BOM/Work Order/Journal Entry/Payment Entry는
