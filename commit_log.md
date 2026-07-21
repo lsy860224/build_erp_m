@@ -6,11 +6,13 @@
 > pushed 여부는 이 스크립트가 마지막으로 실행된 시점 기준 `origin/main`로 판단합니다 —
 > 최신 원격 상태를 반영하려면 실행 전에 `git fetch`를 먼저 실행하세요.
 
-생성 시각: 2026-07-21 10:47:43
+생성 시각: 2026-07-21 12:02:26
 브랜치: `main`
 
 | 날짜 | 커밋 | 메시지 | GitHub Push |
 |---|---|---|---|
+| 2026-07-21 12:01 | `16984ce` | 평가 Role 권한 확정: FAI·PPAP Submission·APQP Gate RWC | ✅ |
+| 2026-07-21 10:48 | `5a063ae` | Update commit_log.md pushed status after previous push | ✅ |
 | 2026-07-21 10:47 | `9b52114` | 평가 Role 신설 + 6개 역할 테스트 User 계정 생성 | ✅ |
 | 2026-07-21 10:20 | `40161d8` | Update commit_log.md pushed status after previous push | ✅ |
 | 2026-07-21 10:19 | `b9e2451` | PPAP/APQP/Control Plan/PFMEA/FAI/4M Change DocType 신설 + §5.4 권한 매트릭스 확장 | ✅ |
