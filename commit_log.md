@@ -6,11 +6,13 @@
 > pushed 여부는 이 스크립트가 마지막으로 실행된 시점 기준 `origin/main`로 판단합니다 —
 > 최신 원격 상태를 반영하려면 실행 전에 `git fetch`를 먼저 실행하세요.
 
-생성 시각: 2026-07-21 10:01:47
+생성 시각: 2026-07-21 10:07:40
 브랜치: `main`
 
 | 날짜 | 커밋 | 메시지 | GitHub Push |
 |---|---|---|---|
+| 2026-07-21 10:06 | `d2aaf52` | Item/BOM 권한 담당 확정: 구매·생산(Item), 생산·품질·관리자(BOM) | ✅ |
+| 2026-07-21 10:02 | `e1cae07` | Update commit_log.md pushed status after previous push | ✅ |
 | 2026-07-21 10:01 | `f9584e6` | §5.4 권한 Role Matrix 완성: 생산·품질 Role 신설 | ✅ |
 | 2026-07-21 09:54 | `1eea996` | Update commit_log.md pushed status after previous push | ✅ |
 | 2026-07-21 09:53 | `049cb18` | 회계모듈: 재고평가 vs GL 대사 검증 완료 (§6.7 Go-live 게이트) | ✅ |
