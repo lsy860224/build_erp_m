@@ -288,14 +288,18 @@ fixtures = [
 			["name", "in", ["후가공 (PP)", "PCB ASSY·SMT (PC)", "조립 (AS)", "검사·포장 (QT)"]]
 		],
 	},
-	# §5.4 권한 Role Matrix(5개 역할 중 경리/관리자/구매 3개 구현, 생산·품질은 미착수).
+	# §5.4 권한 Role Matrix — 5개 역할(경리/관리자/구매/생산/품질) 전부 구현.
 	# 경리: 내부 정합용 전표(Journal Entry/Payment Entry) 담당, GL Entry는 Read-only.
-	# 관리자: Purchase Order·Payment Entry 승인 게이트(§5.5)의 승인자 — 두 DocType에
-	# RWCD+Submit/Cancel/Amend. 구매: Purchase Order 기안자 — RWC만(Submit 없음, §5.4
-	# "실무진은 RWC 위주" 원칙). 경리의 Payment Entry Submit/Cancel/Amend는 §5.5 워크플로우
-	# 도입 시 제거(아래 Workflow 항목 참조) — 실행은 관리자 승인을 거쳐야 하므로.
-	{"doctype": "Role", "filters": [["name", "in", ["경리", "관리자", "구매"]]]},
-	{"doctype": "Custom DocPerm", "filters": [["role", "in", ["경리", "관리자", "구매"]]]},
+	# 구매: Purchase Order RWC(Submit 없음). 생산: Work Order/Job Card/Stock Entry RWC.
+	# 품질: Quality Inspection RWC. 넷 다 "실무진은 RWC 위주"(§5.4) 원칙 — 확정 권한은
+	# 관리자에 집중. 관리자: Purchase Order·Payment Entry(승인 게이트, §5.5) + Work
+	# Order/Job Card/Stock Entry/Quality Inspection까지 RWCD+Submit/Cancel/Amend —
+	# 뒤 4개는 별도 Workflow 없이 §5.4 role matrix의 단일 Submit 권한만으로 충분(§5.5
+	# 결정, Workflow는 PO·Payment Entry 2개뿐). 경리의 Payment Entry Submit/Cancel/
+	# Amend는 §5.5 워크플로우 도입 시 제거(아래 Workflow 항목 참조).
+	# 미결정: Item/BOM은 5개 역할 중 누가 담당인지 §5.4 원문에 특정 안 돼 있어 보류.
+	{"doctype": "Role", "filters": [["name", "in", ["경리", "관리자", "구매", "생산", "품질"]]]},
+	{"doctype": "Custom DocPerm", "filters": [["role", "in", ["경리", "관리자", "구매", "생산", "품질"]]]},
 	# Track Changes(감사 추적성, §5.4): Item/BOM/Work Order/Journal Entry/Payment Entry는
 	# ERPNext 기본값이 이미 track_changes=1이라 별도 조치 불필요(콘솔 확인 완료).
 	# Quality Inspection·GL Entry만 기본값 0이라 Property Setter로 1로 전환.
