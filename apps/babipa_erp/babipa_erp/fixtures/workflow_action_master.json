@@ -1,0 +1,23 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-07-21 09:33:30.328359",
+  "name": "승인요청",
+  "workflow_action_name": "승인요청"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-07-21 09:33:30.540714",
+  "name": "승인",
+  "workflow_action_name": "승인"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-07-21 09:33:30.544092",
+  "name": "반려",
+  "workflow_action_name": "반려"
+ }
+]

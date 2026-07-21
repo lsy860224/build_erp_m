@@ -1,0 +1,47 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2026-07-21 09:33:00.449332",
+  "name": "발주요청",
+  "style": "",
+  "workflow_state_name": "발주요청"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2026-07-21 09:33:00.901314",
+  "name": "승인대기",
+  "style": "",
+  "workflow_state_name": "승인대기"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2026-07-21 09:33:00.904757",
+  "name": "확정",
+  "style": "",
+  "workflow_state_name": "확정"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2026-07-21 09:33:00.911934",
+  "name": "지급요청",
+  "style": "",
+  "workflow_state_name": "지급요청"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2026-07-21 09:33:00.914578",
+  "name": "실행",
+  "style": "",
+  "workflow_state_name": "실행"
+ }
+]

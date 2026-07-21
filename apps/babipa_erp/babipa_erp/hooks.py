@@ -288,14 +288,14 @@ fixtures = [
 			["name", "in", ["후가공 (PP)", "PCB ASSY·SMT (PC)", "조립 (AS)", "검사·포장 (QT)"]]
 		],
 	},
-	# 경리 Role: docs/decisions.md §5.4 권한 Role Matrix(5개 역할) 중 1번째 구현.
-	# 초기 권한 범위는 §4.5·§5.4에서 명시적으로 결정된 "내부 정합용 전표"에 한정 —
-	# Journal Entry/Payment Entry는 RWCD+Submit/Cancel/Amend(경리가 직접 전표를 확정),
-	# GL Entry는 Read-only(시스템이 자동 생성하는 원장이라 수동 생성 대상 아님).
-	# Purchase/Sales Invoice, Supplier, Customer 등 나머지 DocType 접근 범위는
-	# 아직 미결정 — 후속 확인 필요.
-	{"doctype": "Role", "filters": [["name", "=", "경리"]]},
-	{"doctype": "Custom DocPerm", "filters": [["role", "=", "경리"]]},
+	# §5.4 권한 Role Matrix(5개 역할 중 경리/관리자/구매 3개 구현, 생산·품질은 미착수).
+	# 경리: 내부 정합용 전표(Journal Entry/Payment Entry) 담당, GL Entry는 Read-only.
+	# 관리자: Purchase Order·Payment Entry 승인 게이트(§5.5)의 승인자 — 두 DocType에
+	# RWCD+Submit/Cancel/Amend. 구매: Purchase Order 기안자 — RWC만(Submit 없음, §5.4
+	# "실무진은 RWC 위주" 원칙). 경리의 Payment Entry Submit/Cancel/Amend는 §5.5 워크플로우
+	# 도입 시 제거(아래 Workflow 항목 참조) — 실행은 관리자 승인을 거쳐야 하므로.
+	{"doctype": "Role", "filters": [["name", "in", ["경리", "관리자", "구매"]]]},
+	{"doctype": "Custom DocPerm", "filters": [["role", "in", ["경리", "관리자", "구매"]]]},
 	# Track Changes(감사 추적성, §5.4): Item/BOM/Work Order/Journal Entry/Payment Entry는
 	# ERPNext 기본값이 이미 track_changes=1이라 별도 조치 불필요(콘솔 확인 완료).
 	# Quality Inspection·GL Entry만 기본값 0이라 Property Setter로 1로 전환.
@@ -305,6 +305,22 @@ fixtures = [
 			["doc_type", "in", ["GL Entry", "Quality Inspection"]],
 			["property", "=", "track_changes"],
 		],
+	},
+	# §5.5 전자결재 워크플로우: Purchase Order(발주요청→승인대기→확정), Payment Entry
+	# (지급요청→승인대기→실행) 2개만 Frappe Workflow 적용 — 그 외 DocType은 §5.4 role
+	# matrix의 단일 Submit 권한만으로 충분하다고 이미 결정됨. 승인(관리자)·반려 전이는
+	# allow_self_approval=0으로 설정해 기안자 본인이 자기 문서를 승인할 수 없도록 함.
+	# Workflow 저장 시 workflow_state Custom Field가 자동 생성되므로 별도 export.
+	{"doctype": "Workflow State", "filters": [["name", "in", ["발주요청", "승인대기", "확정", "지급요청", "실행"]]]},
+	{"doctype": "Workflow Action Master", "filters": [["name", "in", ["승인요청", "승인", "반려"]]]},
+	{
+		"doctype": "Workflow",
+		"filters": [["name", "in", ["Purchase Order 발주 승인", "Payment Entry 지급 승인"]]],
+	},
+	{
+		"doctype": "Custom Field",
+		"filters": [["dt", "in", ["Purchase Order", "Payment Entry"]], ["fieldname", "=", "workflow_state"]],
+		"prefix": "workflow",
 	},
 ]
 
